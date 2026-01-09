@@ -102,7 +102,7 @@ spring:
 
 ### 3. 启动项目
 
-**单体模式**：直接运行 geg 即可
+**单体模式**：直接运行 `CmsWebApplication.java` 即可
 
 **微服务模式**：
 1. 启动 Nacos 服务
