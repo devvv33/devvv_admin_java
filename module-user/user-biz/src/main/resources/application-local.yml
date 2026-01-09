@@ -1,0 +1,105 @@
+# 单体模式配置 - 所有配置都在本地
+spring:
+  cloud:
+    nacos:
+      config:
+        enabled: false    # 禁用 Nacos 配置中心
+      discovery:
+        enabled: false    # 禁用 Nacos 服务发现
+
+############################### Spring公共 配置 ###############################
+  threads:
+    virtual:
+      enabled: true       # 开启虚拟线程
+
+  main:
+    allow-circular-references: true             # 允许循环依赖
+    allow-bean-definition-overriding: true      # 允许 Bean 覆盖，例如说 Dubbo 或者 Feign 等会存在重复定义的服务
+
+  # Servlet 配置
+  servlet:
+    # 文件上传相关配置项
+    multipart:
+      max-file-size: 16MB           # 单个文件大小
+      max-request-size: 32MB        # 设置总上传的文件大小
+
+
+############################### 监控端口 ###############################
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics,prometheus"
+
+############################### MySQL 配置 ###############################
+dataSource:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  initSize: 1                       # 初始连接数
+  maxActive: 50                     # 最大连接数(并发数)
+  minIdle: 3                        # 最小连接池数量
+  connectionTimeout: 60000          # 获取连接时最大等待时间，单位毫秒
+  validationQuery: SELECT 1
+  testWhileIdle: true                      # 在空闲时检查有效性
+  testOnBorrow: false                      # 申请连接时执行validationQuery检测连接是否有效
+  testOnReturn: false                      # 归还连接时执行validationQuery检测连接是否有效
+  timeBetweenEvictionRunsMillis: 60000     # 间隔多久进行检测，关闭空闲连接，单位毫秒
+  idleTimeout: 600000                      # 连接在连接池中空闲的最长时间（毫秒），超过此时间将被释放。
+  username: admin
+  password: 123456
+  types:  # 各数据源的单独配置，可覆写公共配置
+    sys:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/devvv_cms?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    user:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/devvv_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+  # 启用的配置
+  enable-types: sys,user
+
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.kabda.**.entity
+  mapperLocations: classpath*:mapper/**/*.xml
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: false
+  params: count=countSql
+
+
+############################### Redis 配置 ###############################
+redis:
+  maxIdle: 10
+  maxTotal: 30
+  minIdle: 5
+  timeout: 20000
+  maxWaitMillis: 10000
+  testOnBorrow: true
+  host: 192.168.96.251
+  port: 7390
+  password:
+  types:
+    sys:
+      database: 1
+    limit:
+      database: 2
+    session:
+      database: 3
+    table:
+      database: 4
+    biz:
+      database: 5
+    user:
+      database: 6
+  # 启用的配置
+  enable-types: sys,limit,session,table,user
+
+
+############################### 接口秘钥 配置 ###############################
+apiKey:
+  AA:     # 安卓客户端
+    public:
+    private:
+  IA:     # IOS客户端
+    public:
+    private:

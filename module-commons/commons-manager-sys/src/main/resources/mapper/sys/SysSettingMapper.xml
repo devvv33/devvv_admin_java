@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.commons.manager.sys.dao.sys.mapper.SysSettingMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.commons.manager.sys.dao.sys.entity.SysSetting">
+    <!--@mbg.generated-->
+    <!--@Table sys_setting-->
+    <id column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="LONGVARCHAR" property="value" />
+    <result column="read_only" jdbcType="BOOLEAN" property="readOnly" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `key`, `value`, read_only, sort, remark, version, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_setting
+    where `key` = #{key,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from sys_setting
+    where `key` = #{key,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSetting">
+    <!--@mbg.generated-->
+    insert into sys_setting (`key`, `value`, read_only, 
+      sort, remark, version, 
+      create_time, update_time)
+    values (#{key,jdbcType=VARCHAR}, #{value,jdbcType=LONGVARCHAR}, #{readOnly,jdbcType=BOOLEAN}, 
+      #{sort,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSetting">
+    <!--@mbg.generated-->
+    insert into sys_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        `key`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="readOnly != null">
+        read_only,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="readOnly != null">
+        #{readOnly,jdbcType=BOOLEAN},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSetting">
+    <!--@mbg.generated-->
+    update sys_setting
+    <set>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="readOnly != null">
+        read_only = #{readOnly,jdbcType=BOOLEAN},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where `key` = #{key,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSetting">
+    <!--@mbg.generated-->
+    update sys_setting
+    set `value` = #{value,jdbcType=LONGVARCHAR},
+      read_only = #{readOnly,jdbcType=BOOLEAN},
+      sort = #{sort,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where `key` = #{key,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="listAll" resultMap="BaseResultMap">
+    select *
+    from sys_setting
+    order by sort
+  </select>
+  
+  <select id="listByParam" resultMap="BaseResultMap">
+    select *
+    from sys_setting
+    <where>
+      <if test="key != null and key != ''">
+        and `key` like concat('%', #{key}, '%')
+      </if>
+      <if test="value != null and value != ''">
+        and `value` like concat('%', #{value}, '%')
+      </if>
+      <if test="remark != null and remark != ''">
+        and `remark` like concat('%', #{remark}, '%')
+      </if>
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.cms.dao.cms.mapper.CmsMenuFieldMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.cms.dao.cms.entity.CmsMenuField">
+    <!--@mbg.generated-->
+    <!--@Table cms_menu_field-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="field_key" jdbcType="VARCHAR" property="fieldKey" />
+    <result column="field_label" jdbcType="VARCHAR" property="fieldLabel" />
+    <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
+    <result column="required" jdbcType="BOOLEAN" property="required" />
+    <result column="input_type" jdbcType="VARCHAR" property="inputType" />
+    <result column="show_type" jdbcType="VARCHAR" property="showType" />
+    <result column="width" jdbcType="VARCHAR" property="width" />
+    <result column="format_script" jdbcType="VARCHAR" property="formatScript" />
+    <result column="extra" jdbcType="VARCHAR" property="extra" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, menu_id, field_key, field_label, field_type, required, input_type, show_type, 
+    width, format_script, extra, create_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_menu_field
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cms_menu_field
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsMenuField" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu_field (menu_id, field_key, field_label, 
+      field_type, required, input_type, 
+      show_type, width, format_script, 
+      extra, create_id, create_time)
+    values (#{menuId,jdbcType=BIGINT}, #{fieldKey,jdbcType=VARCHAR}, #{fieldLabel,jdbcType=VARCHAR}, 
+      #{fieldType,jdbcType=VARCHAR}, #{required,jdbcType=BOOLEAN}, #{inputType,jdbcType=VARCHAR}, 
+      #{showType,jdbcType=VARCHAR}, #{width,jdbcType=VARCHAR}, #{formatScript,jdbcType=VARCHAR}, 
+      #{extra,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT},  #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsMenuField" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu_field
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="fieldKey != null">
+        field_key,
+      </if>
+      <if test="fieldLabel != null">
+        field_label,
+      </if>
+      <if test="fieldType != null">
+        field_type,
+      </if>
+      <if test="required != null">
+        required,
+      </if>
+      <if test="inputType != null">
+        input_type,
+      </if>
+      <if test="showType != null">
+        show_type,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="formatScript != null">
+        format_script,
+      </if>
+      <if test="extra != null">
+        extra,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuId != null">
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldKey != null">
+        #{fieldKey,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldLabel != null">
+        #{fieldLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null">
+        #{fieldType,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=BOOLEAN},
+      </if>
+      <if test="inputType != null">
+        #{inputType,jdbcType=VARCHAR},
+      </if>
+      <if test="showType != null">
+        #{showType,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=VARCHAR},
+      </if>
+      <if test="formatScript != null">
+        #{formatScript,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.cms.dao.cms.entity.CmsMenuField">
+    <!--@mbg.generated-->
+    update cms_menu_field
+    <set>
+      <if test="menuId != null">
+        menu_id = #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldKey != null">
+        field_key = #{fieldKey,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldLabel != null">
+        field_label = #{fieldLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null">
+        field_type = #{fieldType,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        required = #{required,jdbcType=BOOLEAN},
+      </if>
+      <if test="inputType != null">
+        input_type = #{inputType,jdbcType=VARCHAR},
+      </if>
+      <if test="showType != null">
+        show_type = #{showType,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=VARCHAR},
+      </if>
+      <if test="formatScript != null">
+        format_script = #{formatScript,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.cms.dao.cms.entity.CmsMenuField">
+    <!--@mbg.generated-->
+    update cms_menu_field
+    set menu_id = #{menuId,jdbcType=BIGINT},
+      field_key = #{fieldKey,jdbcType=VARCHAR},
+      field_label = #{fieldLabel,jdbcType=VARCHAR},
+      field_type = #{fieldType,jdbcType=VARCHAR},
+      required = #{required,jdbcType=BOOLEAN},
+      input_type = #{inputType,jdbcType=VARCHAR},
+      show_type = #{showType,jdbcType=VARCHAR},
+      width = #{width,jdbcType=VARCHAR},
+      format_script = #{formatScript,jdbcType=VARCHAR},
+      extra = #{extra,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu_field
+    (menu_id, field_key, field_label, field_type, required, input_type, show_type, width, 
+      format_script, extra, create_id, create_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.menuId,jdbcType=BIGINT}, #{item.fieldKey,jdbcType=VARCHAR}, #{item.fieldLabel,jdbcType=VARCHAR}, 
+        #{item.fieldType,jdbcType=VARCHAR}, #{item.required,jdbcType=BOOLEAN}, #{item.inputType,jdbcType=VARCHAR}, 
+        #{item.showType,jdbcType=VARCHAR}, #{item.width,jdbcType=VARCHAR}, #{item.formatScript,jdbcType=VARCHAR}, 
+        #{item.extra,jdbcType=VARCHAR}, #{item.createId,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelectiveUseDefaultForNull" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu_field
+    (menu_id, field_key, field_label, field_type, required, input_type, show_type, width, 
+      format_script, extra, create_id, create_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <choose>
+        <when test="item.menuId != null">
+          #{item.menuId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fieldKey != null">
+          #{item.fieldKey,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fieldLabel != null">
+          #{item.fieldLabel,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fieldType != null">
+          #{item.fieldType,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.required != null">
+          #{item.required,jdbcType=BOOLEAN},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.inputType != null">
+          #{item.inputType,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.showType != null">
+          #{item.showType,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.width != null">
+          #{item.width,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.formatScript != null">
+          #{item.formatScript,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.extra != null">
+          #{item.extra,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.createId != null">
+          #{item.createId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.createTime != null">
+          #{item.createTime,jdbcType=TIMESTAMP}
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT
+        </otherwise>
+      </choose>
+      )
+    </foreach>
+  </insert>
+  
+  <select id="listAll" resultMap="BaseResultMap">
+    select *
+    from cms_menu_field
+  </select>
+  
+  <delete id="deleteByMenuId">
+    delete from cms_menu_field
+    where menu_id = #{menuId,jdbcType=BIGINT}
+  </delete>
+</mapper>

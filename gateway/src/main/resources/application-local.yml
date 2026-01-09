@@ -1,0 +1,71 @@
+# 单体模式配置 - 所有配置都在本地
+spring:
+  cloud:
+    nacos:
+      config:
+        enabled: false    # 禁用 Nacos 配置中心
+      discovery:
+        enabled: false    # 禁用 Nacos 服务发现
+    gateway:
+      server:
+        webflux:
+          # 全局跨域配置
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+                allowCredentials: true
+                maxAge: 3600
+          routes:
+            # CMS API 路由
+            - id: cms-api-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/cmsApi/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # CMS File 路由
+            - id: cms-file-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/cmsFile/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # 用户中心路由
+            - id: user-route
+              uri: http://localhost:8802
+              predicates:
+                - Path=/api/user/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # AI 模块路由
+            - id: ai-route
+              uri: http://localhost:8804
+              predicates:
+                - Path=/api/ai/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # 默认路由 - 未匹配到的请求都转发到 CMS
+            - id: default-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/**
+              filters:
+                - StripPrefix=0
+              order: 999
+
+
+    # 禁用 LoadBalancer(因为不使用服务发现)
+    loadbalancer:
+      ribbon:
+        enabled: false

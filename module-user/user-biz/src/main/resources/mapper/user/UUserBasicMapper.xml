@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.user.web.dao.mapper.UUserBasicMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.user.web.dao.entity.UUserBasic">
+    <!--@mbg.generated-->
+    <!--@Table u_user_basic-->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_type" jdbcType="CHAR" property="userType" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="user_status" jdbcType="CHAR" property="userStatus" />
+    <result column="vip_type" jdbcType="VARCHAR" property="vipType" />
+    <result column="vip_expire_time" jdbcType="TIMESTAMP" property="vipExpireTime" />
+    <result column="package_type" jdbcType="CHAR" property="packageType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, user_type, nickname, avatar, gender, user_status, vip_type, vip_expire_time, 
+    package_type, create_time, register_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from u_user_basic
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from u_user_basic
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="com.devvv.user.web.dao.entity.UUserBasic" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into u_user_basic (user_type, nickname, avatar, 
+      gender, user_status, vip_type, 
+      vip_expire_time, package_type, create_time, 
+      register_time)
+    values (#{userType,jdbcType=CHAR}, #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=CHAR}, #{userStatus,jdbcType=CHAR}, #{vipType,jdbcType=VARCHAR}, 
+      #{vipExpireTime,jdbcType=TIMESTAMP}, #{packageType,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{registerTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.devvv.user.web.dao.entity.UUserBasic" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into u_user_basic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="vipType != null">
+        vip_type,
+      </if>
+      <if test="vipExpireTime != null">
+        vip_expire_time,
+      </if>
+      <if test="packageType != null">
+        package_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userType != null">
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="vipType != null">
+        #{vipType,jdbcType=VARCHAR},
+      </if>
+      <if test="vipExpireTime != null">
+        #{vipExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packageType != null">
+        #{packageType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.user.web.dao.entity.UUserBasic">
+    <!--@mbg.generated-->
+    update u_user_basic
+    <set>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="vipType != null">
+        vip_type = #{vipType,jdbcType=VARCHAR},
+      </if>
+      <if test="vipExpireTime != null">
+        vip_expire_time = #{vipExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packageType != null">
+        package_type = #{packageType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.user.web.dao.entity.UUserBasic">
+    <!--@mbg.generated-->
+    update u_user_basic
+    set user_type = #{userType,jdbcType=CHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      user_status = #{userStatus,jdbcType=CHAR},
+      vip_type = #{vipType,jdbcType=VARCHAR},
+      vip_expire_time = #{vipExpireTime,jdbcType=TIMESTAMP},
+      package_type = #{packageType,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      register_time = #{registerTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="pageList" resultMap="BaseResultMap">
+    select *
+    from u_user_basic
+    <where>
+      <if test="userId != null">
+        and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="nickname != null and nickname != ''">
+        and nickname like concat('%', #{nickname,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+</mapper>

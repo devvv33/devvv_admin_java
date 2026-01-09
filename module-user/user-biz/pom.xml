@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.devvv</groupId>
+        <artifactId>module-user</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>user-biz</artifactId>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>
+        user 模块下，我们放通用业务，支撑上层的核心业务。
+        例如说：用户、部门、权限、数据字典等等
+    </description>
+
+    <dependencies>
+        <!-- Web支持 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>commons-support-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 基础业务 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>commons-manager-sys</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!-- Nacos 注册中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        
+        <!-- Token鉴权 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>commons-support-sa-token</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 远程调用 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>commons-support-feign</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!-- 依赖服务 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>user-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!--&lt;!&ndash; MQ &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>com.devvv</groupId>-->
+        <!--    <artifactId>commons-support-mq</artifactId>-->
+        <!--    <version>${project.version}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; 定时任务 &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--    <groupId>com.devvv</groupId>-->
+        <!--    <artifactId>commons-support-xxl-job</artifactId>-->
+        <!--    <version>${project.version}</version>-->
+        <!--</dependency>-->
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!--SpringBoot打包插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- 将引入的 jar 打入其中 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

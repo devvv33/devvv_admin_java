@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.cms.dao.cms.mapper.CmsDepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.cms.dao.cms.entity.CmsDepartment">
+    <!--@mbg.generated-->
+    <!--@Table cms_department-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="id_path" jdbcType="VARCHAR" property="idPath" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="dept_code" jdbcType="VARCHAR" property="deptCode" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="leader" jdbcType="VARCHAR" property="leader" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, parent_id, id_path, dept_name, dept_code, sort, leader, mobile, `status`, remark, 
+    create_id, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_department
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cms_department
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsDepartment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_department (parent_id, id_path, dept_name,
+      dept_code, sort, leader, 
+      mobile, `status`, remark, 
+      create_id, create_time, update_time
+      )
+    values (#{parentId,jdbcType=BIGINT}, #{idPath,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, 
+      #{deptCode,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{leader,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsDepartment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="idPath != null">
+        id_path,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="deptCode != null">
+        dept_code,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="idPath != null">
+        #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.cms.dao.cms.entity.CmsDepartment">
+    <!--@mbg.generated-->
+    update cms_department
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="idPath != null">
+        id_path = #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        dept_code = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.cms.dao.cms.entity.CmsDepartment">
+    <!--@mbg.generated-->
+    update cms_department
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      id_path = #{idPath,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_code = #{deptCode,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      leader = #{leader,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="listAll" resultMap="BaseResultMap">
+    select *
+    from cms_department
+  </select>
+  
+  <select id="listByParam" resultMap="BaseResultMap">
+    select *
+    from cms_department
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="parentId != null">
+        and parent_id = #{parentId}
+      </if>
+      <if test="idPath != null">
+        and id_path like concat(#{idPath},'%')
+      </if>
+      <if test="deptName != null">
+        and dept_name like concat('%',#{deptName},'%')
+      </if>
+      <if test="deptCode != null">
+        and dept_code like concat('%',#{deptCode},'%')
+      </if>
+      <if test="status != null">
+        and `status` = #{status}
+      </if>
+    </where>
+    order by sort
+  </select>
+  
+  <select id="getByCode" resultMap="BaseResultMap">
+    select *
+    from cms_department
+    where dept_code = #{deptCode}
+  </select>
+  
+  <select id="listByParentId" resultMap="BaseResultMap">
+    select *
+    from cms_department
+    where parent_id = #{parentId}
+    order by sort
+  </select>
+</mapper>

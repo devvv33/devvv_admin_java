@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.devvv</groupId>
+        <artifactId>module-commons</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    
+    <artifactId>commons-support-mq</artifactId>
+    <packaging>jar</packaging>
+    <description>RocketMQ</description>
+    
+    
+    <dependencies>
+        <!-- 基础工具模块 -->
+        <dependency>
+            <groupId>com.devvv</groupId>
+            <artifactId>commons-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!-- 阿里云RocketMQ
+            文档: https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-4-x-series/getting-started/use-tcp-client-sdks-to-send-and-subscribe-to-normal-messages?spm=a2c4g.11186623.0.0.66563accLC4OVW
+        -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-acl</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>annotations-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+    </dependencies>
+</project>

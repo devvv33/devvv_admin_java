@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.commons.manager.sys.dao.sys.mapper.SysSettingHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.commons.manager.sys.dao.sys.entity.SysSettingHistory">
+    <!--@mbg.generated-->
+    <!--@Table sys_setting_history-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="LONGVARCHAR" property="value" />
+    <result column="read_only" jdbcType="BOOLEAN" property="readOnly" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="change_remark" jdbcType="VARCHAR" property="changeRemark" />
+    <result column="change_admin_id" jdbcType="BIGINT" property="changeAdminId" />
+    <result column="change_time" jdbcType="TIMESTAMP" property="changeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `key`, `value`, read_only, sort, remark, version, change_remark, change_admin_id, 
+    change_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_setting_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_setting_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSettingHistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_setting_history (`key`, `value`, read_only, 
+      sort, remark, version, 
+      change_remark, change_admin_id, change_time
+      )
+    values (#{key,jdbcType=VARCHAR}, #{value,jdbcType=LONGVARCHAR}, #{readOnly,jdbcType=BOOLEAN}, 
+      #{sort,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{changeRemark,jdbcType=VARCHAR}, #{changeAdminId,jdbcType=BIGINT}, #{changeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSettingHistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_setting_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        `key`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="readOnly != null">
+        read_only,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="changeRemark != null">
+        change_remark,
+      </if>
+      <if test="changeAdminId != null">
+        change_admin_id,
+      </if>
+      <if test="changeTime != null">
+        change_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="readOnly != null">
+        #{readOnly,jdbcType=BOOLEAN},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="changeRemark != null">
+        #{changeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="changeAdminId != null">
+        #{changeAdminId,jdbcType=BIGINT},
+      </if>
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSettingHistory">
+    <!--@mbg.generated-->
+    update sys_setting_history
+    <set>
+      <if test="key != null">
+        `key` = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="readOnly != null">
+        read_only = #{readOnly,jdbcType=BOOLEAN},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="changeRemark != null">
+        change_remark = #{changeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="changeAdminId != null">
+        change_admin_id = #{changeAdminId,jdbcType=BIGINT},
+      </if>
+      <if test="changeTime != null">
+        change_time = #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.commons.manager.sys.dao.sys.entity.SysSettingHistory">
+    <!--@mbg.generated-->
+    update sys_setting_history
+    set `key` = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=LONGVARCHAR},
+      read_only = #{readOnly,jdbcType=BOOLEAN},
+      sort = #{sort,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      change_remark = #{changeRemark,jdbcType=VARCHAR},
+      change_admin_id = #{changeAdminId,jdbcType=BIGINT},
+      change_time = #{changeTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="listByParam" resultMap="BaseResultMap">
+    select *
+    from sys_setting_history
+    <where>
+      <if test="key != null and key != ''">
+        and `key` = #{key}
+      </if>
+      <if test="value != null and value != ''">
+        and `value` like concat('%', #{value}, '%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+</mapper>

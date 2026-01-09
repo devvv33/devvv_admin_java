@@ -1,0 +1,12 @@
+# Tomcat
+server:
+  port: 8801
+# Spring
+spring: 
+  application:
+    # 应用名称
+    name: cms-web
+  profiles:
+    # 默认环境
+#    active: nacos,dev
+    active: local,dev

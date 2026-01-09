@@ -1,0 +1,53 @@
+
+# redis:
+#   enable-types: table
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+             # CMS API 路由
+            - id: cms-api-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/cmsApi/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # CMS File 路由
+            - id: cms-file-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/cmsFile/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # 用户中心路由
+            - id: user-route
+              uri: http://localhost:8802
+              predicates:
+                - Path=/api/user/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # AI 模块路由
+            - id: ai-route
+              uri: http://localhost:8804
+              predicates:
+                - Path=/api/ai/**
+              filters:
+                - StripPrefix=0
+              order: 1
+
+            # 默认路由 - 未匹配到的请求都转发到 CMS
+            - id: default-route
+              uri: http://localhost:8801
+              predicates:
+                - Path=/**
+              filters:
+                - StripPrefix=0
+              order: 999

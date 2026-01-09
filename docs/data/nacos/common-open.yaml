@@ -1,0 +1,61 @@
+
+
+############################### 阿里云SLS日志配置 ###############################
+aliyun:
+  sls:
+    endpoint: cn-hangzhou.log.aliyuncs.com
+    accessKeyId: xxx
+    accessKeySecret: xxx
+    project: xxx
+    apiLogStore: busi
+    logbackStore: logback
+    busiStore: busi_stream
+    resultMaxLength: 500
+
+# logging:
+#   config: classpath:logback-sls.xml
+  
+############################### 阿里云RocketMQ 配置 ###############################
+rocketmq:
+  name-server-addr: xxx
+  access-key: xxx
+  access-secret: xxx
+  env: dev
+
+
+############################### Feign 配置 ###############################
+feign:
+  client:
+    config:
+      default:
+        logger-level: BASIC        # 日志级别 NONE,BASIC,HEADERS,FULL
+        connect-timeout: 5000     # 连接超时时间
+        read-timeout: 30000       # 读取超时时间
+        ribbon:
+          enabled: true
+  compression:
+    request:
+      enabled: true
+
+############################### xxl-job 配置 ###############################
+xxl:
+  job:
+    admin:
+      addresses: xxx
+      accessToken:
+
+
+############################### OSS 配置 ###############################
+dromara:
+  x-file-storage: #文件存储配置
+    default-platform: aliyun-oss            #默认使用的存储平台
+    thumbnail-suffix: ".min.jpg"            #缩略图后缀，例如【.min.jpg】【.png】
+    aliyun-oss:
+      - platform: aliyun-oss                # 存储平台标识
+        enable-storage: true                # 启用存储
+        access-key: xxx
+        secret-key: xxx
+        end-point: oss-cn-hangzhou.aliyuncs.com
+        bucket-name: xxx
+        domain: https://cdn.devvv.com/               # 访问域名，注意“/”结尾，例如：https://abc.oss-cn-shanghai.aliyuncs.com/
+        base-path:                                                      # 基础路径

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan 配置文件如果发生改变，将会被重新加载  scanPeriod 检测间隔时间-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--为了防止进程退出时，内存中的数据丢失，请加上此选项-->
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+    <!-- 关闭冗余的日志打印 -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    
+    <!-- 输出到阿里云SLS，文档: https://github.com/aliyun/aliyun-log-logback-appender/blob/master/README_CN.md -->
+    <springProperty scope="context" name="endpoint" source="aliyun.sls.endpoint"/>
+    <springProperty scope="context" name="accessKeyId" source="aliyun.sls.accessKeyId"/>
+    <springProperty scope="context" name="accessKeySecret" source="aliyun.sls.accessKeySecret"/>
+    <springProperty scope="context" name="project" source="aliyun.sls.project"/>
+    <springProperty scope="context" name="logStore" source="aliyun.sls.logbackStore"/>
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <appender name="aliuyun" class="com.devvv.commons.core.sls.ExtLoghubAppender">
+        <!--必选项-->
+        <!-- 账号及网络配置 -->
+        <endpoint>${endpoint}</endpoint>
+        <accessKeyId>${accessKeyId}</accessKeyId>
+        <accessKeySecret>${accessKeySecret}</accessKeySecret>
+        <project>${project}</project>
+        <logStore>${logStore}</logStore>
+        <topic>${appName}</topic>
+        <!-- 可选项 详见 '参数说明'-->
+        <totalSizeInBytes>104857600</totalSizeInBytes>
+        <maxBlockMs>0</maxBlockMs>
+        <ioThreadCount>8</ioThreadCount>
+        <batchSizeThresholdInBytes>524288</batchSizeThresholdInBytes>
+        <batchCountThreshold>4096</batchCountThreshold>
+        <lingerMs>1000</lingerMs>
+        <retries>10</retries>
+        <baseRetryBackoffMs>100</baseRetryBackoffMs>
+        <maxRetryBackoffMs>50000</maxRetryBackoffMs>
+        <!-- 可选项 设置 time 字段呈现的格式 -->
+        <timeFormat>yyyy-MM-dd HH:mm:ss.SSS</timeFormat>
+        <!-- 可选项 设置 time 字段呈现的时区 -->
+        <timeZone>Asia/Shanghai</timeZone>
+        <!-- 可选项 设置是否要添加 Location 字段（日志打印位置），默认为 true -->
+        <includeLocation>true</includeLocation>
+        <!-- 可选项 当 encoder 不为空时，是否要包含 message 字段，默认为 true -->
+        <includeMessage>true</includeMessage>
+        <!-- 可选项，exception 堆栈最大记录长度，超出此长度会被截断，默认值为 500 -->
+        <maxThrowable>500</maxThrowable>
+    </appender>
+    
+    <!--指定特定包的日志级别-->
+    <logger name="io.lettuce.core.protocol" level="ERROR"/>
+    <logger name="com.alibaba.cloud.nacos" level="WARN"/>
+    <logger name="com.alibaba.nacos" level="WARN"/>
+    
+    <!-- 输出到阿里云 -->
+    <root level="INFO">
+        <appender-ref ref="aliuyun" />
+    </root>
+<!--
+# 正式环境，在Nacos中添加如下配置，即可切换日志文件为当前文件，将日志转为输出到SLS
+logging:
+  config: classpath:logback-sls.xml
+-->
+</configuration>

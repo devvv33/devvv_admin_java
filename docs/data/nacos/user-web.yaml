@@ -1,0 +1,8 @@
+
+
+dataSource:
+  enable-types: sys,user
+
+redis:
+  enable-types: sys,limit,session,table,user
+

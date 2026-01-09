@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.user.web.dao.mapper.UUserMobileMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.user.web.dao.entity.UUserMobile">
+    <!--@mbg.generated-->
+    <!--@Table u_user_mobile-->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="unsubscribe" jdbcType="BOOLEAN" property="unsubscribe" />
+    <result column="unsubscribe_time" jdbcType="TIMESTAMP" property="unsubscribeTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, mobile, unsubscribe, unsubscribe_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from u_user_mobile
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from u_user_mobile
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.devvv.user.web.dao.entity.UUserMobile">
+    <!--@mbg.generated-->
+    insert into u_user_mobile (user_id, mobile, unsubscribe, 
+      unsubscribe_time, create_time)
+    values (#{userId,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR}, #{unsubscribe,jdbcType=BOOLEAN}, 
+      #{unsubscribeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.devvv.user.web.dao.entity.UUserMobile">
+    <!--@mbg.generated-->
+    insert into u_user_mobile
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="unsubscribe != null">
+        unsubscribe,
+      </if>
+      <if test="unsubscribeTime != null">
+        unsubscribe_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="unsubscribe != null">
+        #{unsubscribe,jdbcType=BOOLEAN},
+      </if>
+      <if test="unsubscribeTime != null">
+        #{unsubscribeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.user.web.dao.entity.UUserMobile">
+    <!--@mbg.generated-->
+    update u_user_mobile
+    <set>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="unsubscribe != null">
+        unsubscribe = #{unsubscribe,jdbcType=BOOLEAN},
+      </if>
+      <if test="unsubscribeTime != null">
+        unsubscribe_time = #{unsubscribeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.user.web.dao.entity.UUserMobile">
+    <!--@mbg.generated-->
+    update u_user_mobile
+    set mobile = #{mobile,jdbcType=VARCHAR},
+      unsubscribe = #{unsubscribe,jdbcType=BOOLEAN},
+      unsubscribe_time = #{unsubscribeTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getByMobile" resultMap="BaseResultMap">
+    select *
+    from u_user_mobile
+    where mobile = #{mobile}
+    limit 1
+    </select>
+    
+  <select id="listAll" resultMap="BaseResultMap">
+    select *
+    from u_user_mobile
+    </select>
+</mapper>

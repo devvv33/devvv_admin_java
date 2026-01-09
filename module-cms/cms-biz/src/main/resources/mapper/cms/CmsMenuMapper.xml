@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.cms.dao.cms.mapper.CmsMenuMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.cms.dao.cms.entity.CmsMenu">
+    <!--@mbg.generated-->
+    <!--@Table cms_menu-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="id_path" jdbcType="VARCHAR" property="idPath" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="route_path" jdbcType="VARCHAR" property="routePath" />
+    <result column="page_type" jdbcType="VARCHAR" property="pageType" />
+    <result column="api_url" jdbcType="VARCHAR" property="apiUrl" />
+    <result column="ext_api_url" jdbcType="VARCHAR" property="extApiUrl" />
+    <result column="extra" jdbcType="VARCHAR" property="extra" />
+    <result column="custom_component" jdbcType="VARCHAR" property="customComponent" />
+    <result column="button_position" jdbcType="VARCHAR" property="buttonPosition" />
+    <result column="button_action" jdbcType="VARCHAR" property="buttonAction" />
+    <result column="before_show_script" jdbcType="VARCHAR" property="beforeShowScript" />
+    <result column="before_submit_script" jdbcType="VARCHAR" property="beforeSubmitScript" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, parent_id, id_path, menu_name, menu_type, icon, sort, route_path, page_type, 
+    api_url, ext_api_url, extra, custom_component, button_position, button_action, before_show_script, 
+    before_submit_script, create_id, create_time, update_id, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cms_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsMenu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu (parent_id, id_path, menu_name, 
+      menu_type, icon, sort, 
+      route_path, page_type, api_url, 
+      ext_api_url, extra, custom_component, 
+      button_position, button_action, before_show_script, 
+      before_submit_script, create_id, create_time, 
+      update_id, update_time)
+    values (#{parentId,jdbcType=BIGINT}, #{idPath,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuType,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{routePath,jdbcType=VARCHAR}, #{pageType,jdbcType=VARCHAR}, #{apiUrl,jdbcType=VARCHAR}, 
+      #{extApiUrl,jdbcType=VARCHAR}, #{extra,jdbcType=VARCHAR}, #{customComponent,jdbcType=VARCHAR}, 
+      #{buttonPosition,jdbcType=VARCHAR}, #{buttonAction,jdbcType=VARCHAR}, #{beforeShowScript,jdbcType=VARCHAR}, 
+      #{beforeSubmitScript,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsMenu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="idPath != null">
+        id_path,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="routePath != null">
+        route_path,
+      </if>
+      <if test="pageType != null">
+        page_type,
+      </if>
+      <if test="apiUrl != null">
+        api_url,
+      </if>
+      <if test="extApiUrl != null">
+        ext_api_url,
+      </if>
+      <if test="extra != null">
+        extra,
+      </if>
+      <if test="customComponent != null">
+        custom_component,
+      </if>
+      <if test="buttonPosition != null">
+        button_position,
+      </if>
+      <if test="buttonAction != null">
+        button_action,
+      </if>
+      <if test="beforeShowScript != null">
+        before_show_script,
+      </if>
+      <if test="beforeSubmitScript != null">
+        before_submit_script,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateId != null">
+        update_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="idPath != null">
+        #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="routePath != null">
+        #{routePath,jdbcType=VARCHAR},
+      </if>
+      <if test="pageType != null">
+        #{pageType,jdbcType=VARCHAR},
+      </if>
+      <if test="apiUrl != null">
+        #{apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="extApiUrl != null">
+        #{extApiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="customComponent != null">
+        #{customComponent,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonPosition != null">
+        #{buttonPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonAction != null">
+        #{buttonAction,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeShowScript != null">
+        #{beforeShowScript,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeSubmitScript != null">
+        #{beforeSubmitScript,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.cms.dao.cms.entity.CmsMenu">
+    <!--@mbg.generated-->
+    update cms_menu
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="idPath != null">
+        id_path = #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="routePath != null">
+        route_path = #{routePath,jdbcType=VARCHAR},
+      </if>
+      <if test="pageType != null">
+        page_type = #{pageType,jdbcType=VARCHAR},
+      </if>
+      <if test="apiUrl != null">
+        api_url = #{apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="extApiUrl != null">
+        ext_api_url = #{extApiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="customComponent != null">
+        custom_component = #{customComponent,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonPosition != null">
+        button_position = #{buttonPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonAction != null">
+        button_action = #{buttonAction,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeShowScript != null">
+        before_show_script = #{beforeShowScript,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeSubmitScript != null">
+        before_submit_script = #{beforeSubmitScript,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.cms.dao.cms.entity.CmsMenu">
+    <!--@mbg.generated-->
+    update cms_menu
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      id_path = #{idPath,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      route_path = #{routePath,jdbcType=VARCHAR},
+      page_type = #{pageType,jdbcType=VARCHAR},
+      api_url = #{apiUrl,jdbcType=VARCHAR},
+      ext_api_url = #{extApiUrl,jdbcType=VARCHAR},
+      extra = #{extra,jdbcType=VARCHAR},
+      custom_component = #{customComponent,jdbcType=VARCHAR},
+      button_position = #{buttonPosition,jdbcType=VARCHAR},
+      button_action = #{buttonAction,jdbcType=VARCHAR},
+      before_show_script = #{beforeShowScript,jdbcType=VARCHAR},
+      before_submit_script = #{beforeSubmitScript,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="listAll" resultMap="BaseResultMap">
+    select *
+    from cms_menu
+    order by sort, id
+  </select>
+  
+  <select id="listByParentId" resultMap="BaseResultMap">
+    select *
+    from cms_menu
+    where parent_id = #{parentId}
+  </select>
+  
+  <select id="listByAdminId" resultMap="BaseResultMap">
+    select distinct m.*
+    from cms_menu m
+        inner join cms_role_menu rm on m.id = rm.menu_id
+        inner join cms_admin_user_role ur on rm.role_id = ur.role_id
+    where ur.admin_id = #{adminId}
+  </select>
+</mapper>

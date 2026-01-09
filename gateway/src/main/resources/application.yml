@@ -1,0 +1,12 @@
+# Tomcat
+server:
+  port: 8888
+# Spring
+spring: 
+  application:
+    # 应用名称
+    name: gateway
+  profiles:
+    # 环境配置
+#    active: local,dev
+    active: nacos,dev

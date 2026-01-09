@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.user.web.dao.mapper.TBanMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.user.web.dao.entity.TBan">
+    <!--@mbg.generated-->
+    <!--@Table t_ban-->
+    <id column="target_type" jdbcType="CHAR" property="targetType" />
+    <id column="target_value" jdbcType="VARCHAR" property="targetValue" />
+    <id column="ban_type" jdbcType="CHAR" property="banType" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    target_type, target_value, ban_type, start_time, end_time, reason, remark, create_by, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_ban
+    where target_type = #{targetType,jdbcType=CHAR}
+      and target_value = #{targetValue,jdbcType=VARCHAR}
+      and ban_type = #{banType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from t_ban
+    where target_type = #{targetType,jdbcType=CHAR}
+      and target_value = #{targetValue,jdbcType=VARCHAR}
+      and ban_type = #{banType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.devvv.user.web.dao.entity.TBan">
+    <!--@mbg.generated-->
+    insert into t_ban (target_type, target_value, ban_type, 
+      start_time, end_time, reason, 
+      remark, create_by, create_time
+      )
+    values (#{targetType,jdbcType=CHAR}, #{targetValue,jdbcType=VARCHAR}, #{banType,jdbcType=CHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createBy,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.devvv.user.web.dao.entity.TBan">
+    <!--@mbg.generated-->
+    insert into t_ban
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="targetType != null">
+        target_type,
+      </if>
+      <if test="targetValue != null">
+        target_value,
+      </if>
+      <if test="banType != null">
+        ban_type,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="targetType != null">
+        #{targetType,jdbcType=CHAR},
+      </if>
+      <if test="targetValue != null">
+        #{targetValue,jdbcType=VARCHAR},
+      </if>
+      <if test="banType != null">
+        #{banType,jdbcType=CHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.user.web.dao.entity.TBan">
+    <!--@mbg.generated-->
+    update t_ban
+    <set>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where target_type = #{targetType,jdbcType=CHAR}
+      and target_value = #{targetValue,jdbcType=VARCHAR}
+      and ban_type = #{banType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.user.web.dao.entity.TBan">
+    <!--@mbg.generated-->
+    update t_ban
+    set start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where target_type = #{targetType,jdbcType=CHAR}
+      and target_value = #{targetValue,jdbcType=VARCHAR}
+      and ban_type = #{banType,jdbcType=CHAR}
+  </update>
+  
+  <select id="pageList" resultMap="BaseResultMap">
+    select *
+    from t_ban
+    where end_time &gt; now()
+    <if test="targetType != null">
+      and target_type = #{targetType,jdbcType=CHAR}
+    </if>
+    <if test=" targetValue != null and targetValue != ''">
+      and target_value like concat('%', #{targetValue,jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="banType != null">
+      and ban_type = #{banType,jdbcType=CHAR}
+    </if>
+    <if test="reason != null and reason != ''">
+      and reason like concat('%', #{reason,jdbcType=VARCHAR}, '%')
+    </if>
+    <if test="remark != null and remark != ''">
+      and remark like concat('%', #{remark,jdbcType=VARCHAR}, '%')
+    </if>
+    order by end_time
+  </select>
+</mapper>

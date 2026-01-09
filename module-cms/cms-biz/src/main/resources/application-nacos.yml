@@ -1,0 +1,18 @@
+# Nacos 模式配置
+spring:
+  config:
+    import:
+      # 在这里配置要导入的文件
+      - nacos:common-sys.yaml?refreshEnabled=true&group=DEFAULT_GROUP
+      - nacos:common-open.yaml?refreshEnabled=true&group=DEFAULT_GROUP
+      - nacos:cms-web.yaml?refreshEnabled=true&group=DEFAULT_GROUP
+  cloud:
+    # nacos配置示例: https://github.com/alibaba/spring-cloud-alibaba/blob/2025.1.x/spring-cloud-alibaba-examples/nacos-example/readme-zh.md
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: 'nacos'
+      password: 'nacos'
+      config:       # 配置中心
+        namespace: dev
+      discovery:    # 注册中心
+        namespace: dev

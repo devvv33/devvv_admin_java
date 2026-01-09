@@ -1,0 +1,12 @@
+# Tomcat
+server:
+  port: 8802
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: user-web
+  profiles:
+    # 默认环境
+    active: local,dev
+#    active: nacos,dev

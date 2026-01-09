@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devvv.cms.dao.cms.mapper.CmsRoleMapper">
+  <resultMap id="BaseResultMap" type="com.devvv.cms.dao.cms.entity.CmsRole">
+    <!--@mbg.generated-->
+    <!--@Table cms_role-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="data_scope" jdbcType="TINYINT" property="dataScope" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, role_code, role_name, `status`, sort, data_scope, remark, create_id, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cms_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_role (role_code, role_name, `status`, 
+      sort, data_scope, remark, 
+      create_id, create_time, update_time
+      )
+    values (#{roleCode,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{sort,jdbcType=INTEGER}, #{dataScope,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
+      #{createId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.devvv.cms.dao.cms.entity.CmsRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleCode != null">
+        role_code,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="dataScope != null">
+        data_scope,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dataScope != null">
+        #{dataScope,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.devvv.cms.dao.cms.entity.CmsRole">
+    <!--@mbg.generated-->
+    update cms_role
+    <set>
+      <if test="roleCode != null">
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dataScope != null">
+        data_scope = #{dataScope,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.devvv.cms.dao.cms.entity.CmsRole">
+    <!--@mbg.generated-->
+    update cms_role
+    set role_code = #{roleCode,jdbcType=VARCHAR},
+      role_name = #{roleName,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      data_scope = #{dataScope,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from cms_role
+  </select>
+    
+    <select id="getByCode" resultMap="BaseResultMap">
+        select *
+        from cms_role
+        where role_code = #{roleCode}
+    </select>
+    
+  <select id="listByParam" resultMap="BaseResultMap">
+    select *
+    from cms_role
+    <where>
+      <if test="roleCode != null and roleCode != ''">
+        and role_code = #{roleCode}
+      </if>
+      <if test="roleName != null and roleName != ''">
+        and role_name like concat('%', #{roleName}, '%')
+      </if>
+      <if test="status != null">
+        and `status` = #{status}
+      </if>
+    </where>
+    order by sort
+    </select>
+  
+  <select id="listByAdminId" resultMap="BaseResultMap">
+    select distinct r.*
+    from cms_role r
+        inner join cms_admin_user_role ur on r.id = ur.role_id
+    where ur.admin_id = #{adminId}
+  </select>
+</mapper>
